@@ -1,6 +1,8 @@
 const {remote} = require('electron');
 const {Menu, MenuItem} = remote;
+
 polygon = require('./polygon.js').createPolygon();
+
 const template = [
     {
         label: 'Edit',
@@ -16,7 +18,14 @@ const template = [
                 click(item, focusedWindow) {
                     console.log('Save item');
                     polygon.writeToFile('log');
-                    console.log(initMap);
+                }
+            },
+            {
+                label: 'Clear',
+                click(item, focusedWindow) {
+                    console.log('Clear');
+                    map.clearAllMarkers();
+                    polygon.clear();
                 }
             }
         ]
